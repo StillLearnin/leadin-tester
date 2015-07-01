@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Leadin Detector</title>
+    <script type="text/javascript">
+        function handleKeyDown(event)
+        {
+            var keyCode = ('which' in event) ? event.which : event.keyCode;
+            //alert ("The Unicode key code is: " + keyCode);
+            if (keyCode >= 32 && keyCode <= 126)
+                keyCode = String.fromCharCode(keyCode);
+            else
+                keyCode = "{" + keyCode + "}"
+            var out = document.getElementById('output');
+            out.innerHTML = out.innerHTML + keyCode;
+        }
+    </script>
+    <script type="text/javascript">
+        function clearOutput()
+        {
+            var out = document.getElementById('output');
+            out.innerHTML = "Output<br/>>";
+            var button = document.getElementById('clearButton');
+            button.blur();
+        }
+    </script>
+</head>
+<body onkeydown="handleKeyDown(event)">
+    <h2>Barcode Reader leadin detector</h2>
+    <p>simply scan a barcode or type on a keyboard<p/>
+    <p id="output">Output<br/>></p>
+    <button id="clearButton" onClick="clearOutput()">Clear Output</button>
+</body>
+</html>
